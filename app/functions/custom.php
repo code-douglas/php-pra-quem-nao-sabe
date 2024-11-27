@@ -20,7 +20,7 @@ function request()
 
 function redirect($target)
 {
-  return header('location:/?page=${$target}');
+  return header("location:/?page={$target}");
 }
 
 function redirectToHome()
