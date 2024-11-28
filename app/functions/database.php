@@ -46,8 +46,19 @@ function all($table)
 function update()
 {
 }
-function find()
+function find($table, $field, $value)
 {
+  $pdo = connect();
+
+  $value = filter_var($value, FILTER_SANITIZE_NUMBER_INT);
+
+  $sql = "select * from {$table} where {$field} = : {$field}";
+
+  $find = $pdo->prepare($sql);
+  $find->bindValue($field, $value);
+  $find->execute();
+
+  return $find->fetch();
 }
 function delete()
 {
